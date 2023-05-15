@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<div class="col mt-5">
+       <h1>Scrap Data from Amazon</h1>
+
+    <form method="post">
+        {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">URL</label>
+    <input type="url" class="form-control" id="exampleInputEmail1" name="url" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Product Type</label>
+    <input type="text" class="form-control" name="product-type" id="exampleInputPassword1">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    {% for i in data%}
+    <img src="{{i.image}}" > <br>
+
+    Title: {{i.title}} <br>
+    Product Type: {{i.product_type}} <br>
+
+    Discounted Price : {{i.price}} <br>
+
+
+    <hr>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
